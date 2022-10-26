@@ -3,8 +3,8 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import todo_data from "./data";
 import { useEffect, useState } from "react";
-function Main() {
-  const [list, setList] = useState(todo_data);
+function Main({list, setList}) {
+  
 
   const checkboxChange = (id) => {
     let items = list.map((item) => {
@@ -39,7 +39,7 @@ function Main() {
             </div>
             <div className="taskDetails">
               <span className="title">{title}</span>
-              <span className="desc">{desc}</span>
+              <span className="desc">{desc}</span> 
             </div>
             <div className="edit_delete_icons">
               <span className="edit">

@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import { FaSearch } from "react-icons/fa";
 import { IconContext } from "react-icons";
-function Header() {
+function Header({search}) {
   return (
     <div className="headerWrapper">
       <div className="profile">
@@ -16,6 +16,7 @@ function Header() {
             name="search"
             id="search"
             placeholder="Search task"
+            onChange={(event)=>search(event.target.value)}
           />
           <span className="icon">
             <IconContext.Provider value={{ color: "#16213E", size: "30px" }}>

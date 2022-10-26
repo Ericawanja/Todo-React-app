@@ -1,34 +1,34 @@
 import React from "react";
 import { IconContext } from "react-icons";
-import { GrAdd } from "react-icons/gr";
+import { IoMdAdd } from "react-icons/io";
 import { BiTaskX, BiTask } from "react-icons/bi";
 import { BsListTask } from "react-icons/bs";
 import "./styles.css";
 
-export default function Navbar() {
+export default function Navbar({filterData}) {
   return (
     <div className="navWrapper">
       <div className="navContent">
         <div className="create">
-          <IconContext.Provider value={{ color: "white", size: "30px" }}>
-            <GrAdd />
+          <IconContext.Provider value={{ color: "white", size: "34px" }}>
+            <IoMdAdd />
           </IconContext.Provider>
           <span className="iconName">Create</span>
         </div>
         <div className="menu">
-          <span>
+          <span onClick= {()=>filterData('all')}>
             <IconContext.Provider value={{ color: "white", size: "30px" }}>
               <BsListTask />
             </IconContext.Provider>
             <span className="iconName">All</span>
           </span>
-          <span>
+          <span onClick= {()=>filterData('pending')}>
             <IconContext.Provider value={{ color: "white", size: "30px" }}>
               <BiTaskX />
             </IconContext.Provider>
             <span className="iconName">Pending</span>
           </span>
-          <span>
+          <span onClick= {()=>filterData('done')}>
             <IconContext.Provider value={{ color: "white", size: "30px" }}>
               <BiTask />
             </IconContext.Provider>
