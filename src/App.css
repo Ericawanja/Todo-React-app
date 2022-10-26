@@ -1,6 +1,6 @@
 .appContainer{
     background-color: #16213E;
-    width: 700px;
+    width: 800px;
     min-height: 100vh;
     margin: auto;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -10,5 +10,5 @@
 
 .taskGrid{
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 20% 70%;
 }

@@ -34,19 +34,65 @@
 }
 
 /******nav*/
-.navWrapper .menu {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+.navWrapper {
   background-color: #1a284d;
   min-height: 100vh;
 }
-
-.menu span {
-  margin: 10px;
-  font-weight: 400;
-  font-size: 1.2rem;
+.navContent {
+  position: sticky;
+  top: 0;
+  padding-top: 90px;
 }
+.menu {
+  display: flex;
+  flex-direction: column;
+  
+}
+.menu span {
+  font-weight: 300;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin: 10px ;
+  display: flex;
+  align-items: center;
+  gap:;
+}
+
+.menu span:hover {
+  background-color: rgb(48, 64, 107);
+}
+.create {
+  display: flex;
+  align-items: center;
+  background-color: #0f3460;
+  padding: 10px;
+  border-radius: 50px;
+  margin: 7px;
+  font-size: 1.3rem;
+  gap: 4px;
+  cursor: pointer;
+}
+.priorityIndex{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+.fill_name{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    
+}
+.fill{
+    width: 25px;
+    height: 25px;
+    background-color: ;
+}
+
 
 /**MAIN**/
 .mainWrapper {
@@ -60,47 +106,44 @@
   grid-template-columns: 20% 60% 20%;
 }
 
-.side{
-    display: flex;
-    flex-direction: column;
-    padding: 0 20px;
-    justify-content:center ;
+.side {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  justify-content: center;
 }
-.side input{
-    width: 35px;
-    height: 35px;
-    padding: 20px;
-    accent-color: #f6f8fb;
-    
+.side input {
+  width: 35px;
+  height: 35px;
+  padding: 20px;
+  accent-color: #f6f8fb;
 }
-.taskDetails{
-    display: flex;
-    flex-direction: column;
+.taskDetails {
+  display: flex;
+  flex-direction: column;
 }
-.taskDetails .title{
-    font-size: 1.3rem;
-    padding: 8px 0;
+.taskDetails .title {
+  font-size: 1.3rem;
+  padding: 8px 0;
 }
-.taskDetails .desc{
-    color: #dadede;
-}
-
-
-.edit_delete_icons{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: center;
+.taskDetails .desc {
+  color: #dadede;
 }
 
-.low {
+.edit_delete_icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.low, .lowFill {
   background-color: #0f3460;
   color: #f6f8fb;
-  
 }
-.high{
-background-color: #E94560 ;
+.high, .highFill {
+  background-color: #e94560;
 }
-.medium{
-    background-color: #533483;
+.medium, .mediumFill {
+  background-color: #533483;
 }
