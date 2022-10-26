@@ -1,0 +1,106 @@
+/****header*/
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(34, 46, 79);
+  padding: 20px 40px;
+}
+.profile {
+  display: flex;
+  flex-direction: column;
+}
+.profile img {
+  width: 80px;
+  border-radius: 100px;
+}
+.searchBar {
+  display: flex;
+  align-items: center;
+}
+.searchBar div input {
+  outline: none;
+  padding: 16px;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  font-size: 1.2rem;
+  border: none;
+}
+.icon {
+  background-color: white;
+  padding: 16px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/******nav*/
+.navWrapper .menu {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #1a284d;
+  min-height: 100vh;
+}
+
+.menu span {
+  margin: 10px;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+/**MAIN**/
+.mainWrapper {
+}
+.task {
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  margin: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+
+.side{
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    justify-content:center ;
+}
+.side input{
+    width: 35px;
+    height: 35px;
+    padding: 20px;
+    accent-color: #f6f8fb;
+    
+}
+.taskDetails{
+    display: flex;
+    flex-direction: column;
+}
+.taskDetails .title{
+    font-size: 1.3rem;
+    padding: 8px 0;
+}
+.taskDetails .desc{
+    color: #dadede;
+}
+
+
+.edit_delete_icons{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.low {
+  background-color: #0f3460;
+  color: #f6f8fb;
+  
+}
+.high{
+background-color: #E94560 ;
+}
+.medium{
+    background-color: #533483;
+}
