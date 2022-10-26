@@ -5,7 +5,12 @@ import todo_data from "./data";
 import { useEffect, useState } from "react";
 function Main() {
   const [list, setList]=  useState(todo_data)
-  checkboxChange = ()=>{
+  
+  const checkboxChange = (index)=>{
+    list[index].status = list[index].status === 'pending' ? 'done': 'pending'
+    console.log(list[index].status)
+    setList(list)
+    console.log(list[index].status)
 
   }
   return (
@@ -18,11 +23,11 @@ function Main() {
             <div className="side">
       
               <span className="input">
-                <input type="checkbox" name="state" className="checkbox" checked= {status === 'pending' ? false : true} onClick = {checkboxChange}/>
+                <input type="checkbox" name="state" className="checkbox" checked= {status === 'pending' ? false : true} onChange = {()=> checkboxChange(index) }/>
               </span>
               
             </div>
-            <div className="taskDetails">
+            <div className="taskDetails"> 
               <span className="title">{title}</span>
               <span className="desc">{desc}</span>
             </div>
