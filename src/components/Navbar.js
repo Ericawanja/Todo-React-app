@@ -15,7 +15,6 @@ export default function Navbar({ filterData, addTask }) {
   const closeForm = () => {
     setOpen((prev) => !prev);
   };
-  
 
   const createTaskDetails = (event) => {
     event.preventDefault();
@@ -27,8 +26,8 @@ export default function Navbar({ filterData, addTask }) {
       status: "pending",
       priority,
     };
-    addTask(task)
-    closeForm()
+    addTask(task);
+    closeForm();
   };
   return (
     <>
@@ -47,19 +46,23 @@ export default function Navbar({ filterData, addTask }) {
               </IconContext.Provider>
               <span className="iconName">All</span>
             </span>
-            <span onClick={(e) => {e.preventDefault() 
-              filterData("pending")}}>
+            <span
+              onClick={(e) => {
+                e.preventDefault();
+                filterData("pending");
+              }}
+            >
               <IconContext.Provider value={{ color: "white", size: "30px" }}>
                 <BiTaskX />
               </IconContext.Provider>
               <span className="iconName">Pending</span>
             </span>
-            <span onClick={(e) =>
-             {
-              e.preventDefault() 
-              filterData("done")}
-              
-              }>
+            <span
+              onClick={(e) => {
+                e.preventDefault();
+                filterData("done");
+              }}
+            >
               <IconContext.Provider value={{ color: "white", size: "30px" }}>
                 <BiTask />
               </IconContext.Provider>
@@ -108,17 +111,35 @@ export default function Navbar({ filterData, addTask }) {
             <br></br>
 
             <p>Select priority level</p>
-            <input type="radio" id="high" name="priority" value= 'high'onChange={(event)=> setPriority(event.target.value)} />
+            <input
+              type="radio"
+              id="high"
+              name="priority"
+              value="high"
+              onChange={(event) => setPriority(event.target.value)}
+            />
             <label for="high">High priority</label>
             <br></br>
             <br></br>
 
-            <input type="radio" id="medium" name="priority" value= 'medium'onChange={(event)=> setPriority(event.target.value)} />
+            <input
+              type="radio"
+              id="medium"
+              name="priority"
+              value="medium"
+              onChange={(event) => setPriority(event.target.value)}
+            />
             <label for="medium">Medium priority</label>
             <br></br>
             <br></br>
 
-            <input type="radio" id="low" name="priority" value='low' onChange={(event)=> setPriority(event.target.value)}/>
+            <input
+              type="radio"
+              id="low"
+              name="priority"
+              value="low"
+              onChange={(event) => setPriority(event.target.value)}
+            />
             <label for="low">Low priority</label>
 
             <div className="formBtns">

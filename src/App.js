@@ -18,8 +18,12 @@ const App = () => {
   const handleSearch = (e) =>
     setState((prev) => ({ ...prev, search: e.target.value }));
 
-  const addData = (task) =>
-    setState((prev) => ({ ...prev, data: [task, ...prev.data] }));
+  const addData = (task) =>{
+    setState((prev) => ({ ...prev, data: [task, ...prev.data], filtered_data:[task, ...prev.filtered_data] }));
+    
+    console.log(state)
+  }
+
 
   useEffect(() => {
     if (state.status !== "") {

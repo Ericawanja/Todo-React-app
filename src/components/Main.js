@@ -11,7 +11,8 @@ function Main({ list, setState }) {
       }
       return item;
     });
-    setState(items);
+    console.log(items)
+    setState((prev)=> ({...prev, data:items, filtered_data:items}));
   };
   const handleDelete = (id) => {
     console.log(list)
