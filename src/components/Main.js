@@ -3,7 +3,8 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import todo_data from "./data";
 import { useEffect, useState } from "react";
-function Main({ list, setState }) {
+
+function Main({ list, setState, closeForm, setFormDetails }) {
   const checkboxChange = (id) => {
     let items = list.map((item) => {
       if (item.id === id) {
@@ -11,14 +12,24 @@ function Main({ list, setState }) {
       }
       return item;
     });
-    console.log(items)
-    setState((prev)=> ({...prev, data:items, filtered_data:items}));
+    console.log(items);
+    setState((prev) => ({ ...prev, data: items, filtered_data: items }));
   };
   const handleDelete = (id) => {
-    console.log(list)
+    console.log(list);
     const items = list.filter((list_item) => list_item.id != id);
-    console.log(items)
-    setState((prev)=> ({...prev, data:items, filtered_data:items}));
+    //console.log(items);
+    setState((prev) => ({ ...prev, data: items, filtered_data: items }));
+  };
+
+  const handleEdit = (id) => {
+    const item = list.find((t) => t.id === id);
+
+    setFormDetails(item);
+    setState((prev) => ({ ...prev, editing: true }));
+
+    console.log(item);
+    closeForm();
   };
   return (
     <>
@@ -44,7 +55,7 @@ function Main({ list, setState }) {
                 <span className="desc">{desc}</span>
               </div>
               <div className="edit_delete_icons">
-                <span className="edit">
+                <span className="edit" onClick={() => handleEdit(id)}>
                   <IconContext.Provider
                     value={{ color: "#f6f8fb", size: "30px" }}
                   >
@@ -63,7 +74,6 @@ function Main({ list, setState }) {
           );
         })}
       </div>
-      
     </>
   );
 }

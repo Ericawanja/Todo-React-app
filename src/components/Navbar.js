@@ -5,35 +5,20 @@ import { BiTaskX, BiTask } from "react-icons/bi";
 import { BsListTask } from "react-icons/bs";
 import "./styles.css";
 
-export default function Navbar({ filterData, addTask }) {
-  const [open, setOpen] = useState(false);
-
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-  const [priority, setPriority] = useState("");
-
-  const closeForm = () => {
-    setOpen((prev) => !prev);
-  };
-
-  const createTaskDetails = (event) => {
-    event.preventDefault();
-    let id = Math.ceil(Math.random() * 100000000);
-    let task = {
-      id,
-      title,
-      desc,
-      status: "pending",
-      priority,
-    };
-    addTask(task);
-    closeForm();
-  };
+export default function Navbar({
+  filterData,
+  closeForm,
+  openStatus,
+  formDetails,
+  handleInputChange,
+  handleEditOrCreateTask
+}) {
+  
   return (
     <>
       <div className="navWrapper">
         <div className="navContent">
-          <div className="create" onClick={closeForm}>
+          <div className="create" onClick={() => closeForm()}>
             <IconContext.Provider value={{ color: "white", size: "34px" }}>
               <IoMdAdd />
             </IconContext.Provider>
@@ -86,69 +71,77 @@ export default function Navbar({ filterData, addTask }) {
           </div>
         </div>
       </div>
-      <div className="createForm">
-        {open && (
-          <form>
-            <label for="title">Enter title</label>
+      {openStatus && (
+        <div className="modal-container">
+          <form className="form-modal">
+            <label htmlFor="title">Enter title</label>
             <br></br>
             <input
               type="text"
               name="title"
               id="title"
-              onChange={(event) => setTitle(event.target.value)}
+              value={formDetails.title}
+              onChange={handleInputChange}
             />
             <br></br>
             <br></br>
 
-            <label for="desc">Enter task description</label>
+            <label htmlFor="desc">Enter task description</label>
             <br></br>
-            <input
-              type="textarea"
+            <textarea
               id="desc"
-              onChange={(event) => setDesc(event.target.value)}
-            />
+              name="desc"
+              rows={3}
+              value={formDetails.desc}
+              onChange={handleInputChange}
+            ></textarea>
             <br></br>
             <br></br>
 
             <p>Select priority level</p>
             <input
-              type="radio"
+              type="checkbox"
               id="high"
-              name="priority"
               value="high"
-              onChange={(event) => setPriority(event.target.value)}
+              checked={formDetails.priority === "high"}
+              name="priority"
+              onChange={handleInputChange}
             />
-            <label for="high">High priority</label>
+            <label htmlFor="high">High priority</label>
             <br></br>
             <br></br>
 
             <input
-              type="radio"
+              type="checkbox"
               id="medium"
-              name="priority"
               value="medium"
-              onChange={(event) => setPriority(event.target.value)}
+              checked={formDetails.priority === "medium"}
+              name="priority"
+              onChange={handleInputChange}
             />
-            <label for="medium">Medium priority</label>
+            <label htmlFor="medium">Medium priority</label>
             <br></br>
             <br></br>
 
-            <input
-              type="radio"
-              id="low"
-              name="priority"
-              value="low"
-              onChange={(event) => setPriority(event.target.value)}
-            />
-            <label for="low">Low priority</label>
+            <label htmlFor="low">
+              <input
+                type="checkbox"
+                id="low"
+                value="low"
+                checked={formDetails.priority === "low"}
+                name="priority"
+                onChange={handleInputChange}
+              />
+              Low priority
+            </label>
 
             <div className="formBtns">
-              <button onClick={closeForm}>Cancel</button>
-              <button onClick={createTaskDetails}>Save</button>
+              <button type="button" onClick={closeForm}>Cancel</button>
+              <button onClick={handleEditOrCreateTask}>Save</button>
             </div>
           </form>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 }

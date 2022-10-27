@@ -11,19 +11,74 @@ const App = () => {
     filtered_data: [],
     status: "",
     search: "",
+    editing: false,
   });
+
+  const [openState, setOpen] = useState(false);
+  const [formDetails, setFormDetails] = useState({
+    title: "",
+    desc: "",
+    priority: "",
+  });
+
+  const closeForm = () => {
+    if (openState) {
+      setState((prev) => ({ ...prev, editing: false }));
+      setFormDetails({
+        title: "",
+        desc: "",
+        priority: "",
+      });
+    }
+    setOpen((prev) => !prev);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormDetails((prev) => ({ ...prev, [name]: value }));
+  };
 
   const filterData = (status) => setState((prev) => ({ ...prev, status }));
 
   const handleSearch = (e) =>
     setState((prev) => ({ ...prev, search: e.target.value }));
 
-  const addData = (task) =>{
-    setState((prev) => ({ ...prev, data: [task, ...prev.data], filtered_data:[task, ...prev.filtered_data] }));
-    
-    console.log(state)
-  }
+  const handleEditOrCreateTask = (e) => {
+    e.preventDefault();
 
+    if (state.editing) {
+      const newData = state.data.map((item) => {
+        if (item.id === formDetails.id) return formDetails;
+        return item;
+      });
+      const newFilteredData = state.filtered_data.map((item) => {
+        if (item.id === formDetails.id) return formDetails;
+        return item;
+      });
+
+      setState((prev) => ({
+        ...prev,
+        data: newData,
+        filtered_data: newFilteredData,
+      }));
+      closeForm()
+    } else {
+      console.log("CREATING");
+      let id = Math.ceil(Math.random() * 100000000);
+      let task = {
+        id,
+        ...formDetails,
+        status: "pending",
+      };
+
+      setState((prev) => ({
+        ...prev,
+        data: [task, ...prev.data],
+        filtered_data: [task, ...prev.filtered_data],
+      }));
+      closeForm()
+    }
+  };
 
   useEffect(() => {
     if (state.status !== "") {
@@ -53,15 +108,30 @@ const App = () => {
       data: todo_data,
       filtered_data: todo_data,
     }));
+    // setFormDetails({title:'', desc:'', priority:''})
   }, []);
+
+  console.log(formDetails);
 
   return (
     <div className="appContainer">
       <Header handleSearch={handleSearch} search={state.search} />
       <div className="taskGrid">
-        <Navbar filterData={filterData} addTask={addData} />
+        <Navbar
+          filterData={filterData}
+          handleEditOrCreateTask={handleEditOrCreateTask}
+          closeForm={closeForm}
+          openStatus={openState}
+          formDetails={formDetails}
+          handleInputChange={handleInputChange}
+        />
 
-        <Main list={state.filtered_data} setState= {setState} />
+        <Main
+          list={state.filtered_data}
+          setState={setState}
+          closeForm={closeForm}
+          setFormDetails={setFormDetails}
+        />
       </div>
     </div>
   );
