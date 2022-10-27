@@ -1,49 +1,66 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 import todo_data from "./components/data";
 
-function App() {
-  // const data = Array.from(todo_data)
-  const [list, setList] = useState([]);
-  const [filtered, setFiltered] = useState();
-  const [filtering, setFiltering] = useState(false);
+const App = () => {
+  const [state, setState] = useState({
+    data: [],
+    filtered_data: [],
+    status: "",
+    search: "",
+  });
 
-  const filterData = (status) => {
-    setFiltering(true);
-    if (status === "all") {
-      setFiltered(list.filter((item) => true));
+  const filterData = (status) => setState((prev) => ({ ...prev, status }));
+
+  const handleSearch = (e) =>
+    setState((prev) => ({ ...prev, search: e.target.value }));
+
+  const addData = (task) =>
+    setState((prev) => ({ ...prev, data: [task, ...prev.data] }));
+
+  useEffect(() => {
+    if (state.status !== "") {
+      let data = state.data.filter((item) =>
+        state.status === "all" ? true : item.status === state.status
+      );
+      setState((prev) => ({ ...prev, filtered_data: data }));
     }
-    if (status === "pending") {
-      setFiltered(list.filter((item) => item.status === status));
+  }, [state.status]);
+
+  useEffect(() => {
+    if (state.search !== "") {
+      let data = state.data.filter(
+        (item) =>
+          item.title.toLowerCase().includes(state.search.toLowerCase()) ||
+          item.desc.toLowerCase().includes(state.search.toLowerCase())
+      );
+      setState((prev) => ({ ...prev, filtered_data: data }));
+    } else {
+      setState((prev) => ({ ...prev, filtered_data: todo_data }));
     }
-    if (status === "done") {
-      setFiltered(list.filter((item) => item.status === status));
-    }
-  };
-  const search = (value) => {
-    const task = list.filter((item) =>
-      item.title.toUpperCase().includes(value.toUpperCase()) ? true : false
-    );
-    setList(task);
-  };
-  const addData = (task) => {
-    //console.log(task);
-    setList([...list, task]);
-  };
-  console.log(list);
+  }, [state.search]);
+
+  useEffect(() => {
+    setState((prev) => ({
+      ...prev,
+      data: todo_data,
+      filtered_data: todo_data,
+    }));
+  }, []);
 
   return (
     <div className="appContainer">
-      <Header search={search} />
+      <Header handleSearch={handleSearch} search={state.search} />
       <div className="taskGrid">
         <Navbar filterData={filterData} addTask={addData} />
-        <Main list={filtering ? filtered : list} setList={setList} />
+
+        <Main list={state.filtered_data} setState= {setState} />
       </div>
     </div>
   );
-}
+};
 
 export default App;

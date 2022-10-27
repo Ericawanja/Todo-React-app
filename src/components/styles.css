@@ -55,7 +55,6 @@
   margin: 10px ;
   display: flex;
   align-items: center;
-  gap:;
 }
 
 .menu span:hover {
@@ -90,7 +89,6 @@
 .fill{
     width: 25px;
     height: 25px;
-    background-color: ;
 }
 
 

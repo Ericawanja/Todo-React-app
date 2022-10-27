@@ -3,7 +3,7 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import todo_data from "./data";
 import { useEffect, useState } from "react";
-function Main({ list, setList }) {
+function Main({ list, setState }) {
   const checkboxChange = (id) => {
     let items = list.map((item) => {
       if (item.id === id) {
@@ -11,11 +11,13 @@ function Main({ list, setList }) {
       }
       return item;
     });
-    setList(items);
+    setState(items);
   };
   const handleDelete = (id) => {
+    console.log(list)
     const items = list.filter((list_item) => list_item.id != id);
-    setList(items);
+    console.log(items)
+    setState((prev)=> ({...prev, data:items, filtered_data:items}));
   };
   return (
     <>
