@@ -16,7 +16,7 @@ function Header({handleSearch, search}) {
             name="search"
             id="search"
             placeholder="Search task"
-            value={search}
+            //value={search}
             onChange={handleSearch}
           />
           <span className="icon">

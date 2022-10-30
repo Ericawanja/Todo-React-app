@@ -82,6 +82,7 @@ export default function Navbar({
               id="title"
               value={formDetails.title}
               onChange={handleInputChange}
+              required
             />
             <br></br>
             <br></br>

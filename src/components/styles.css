@@ -1,9 +1,12 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;600&family=Play:wght@400;700&display=swap');
+
 /****header*/
 .headerWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(34, 46, 79);
+  background:transparent;
   padding: 20px 40px;
 }
 .profile {
@@ -18,6 +21,10 @@
   display: flex;
   align-items: center;
 }
+.searchBar div{
+ 
+  
+}
 .searchBar div input {
   outline: none;
   padding: 16px;
@@ -25,17 +32,22 @@
   border-top-left-radius: 20px;
   font-size: 1.2rem;
   border: none;
+  
+}
+.searchBar div input:hover{
+  
+
 }
 .icon {
   background-color: white;
-  padding: 16px;
+  padding: 17px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }
 
 /******nav*/
 .navWrapper {
-  background-color: #1a284d;
+  background-color: rgb(26,31,60);
   min-height: 100vh;
 }
 .navContent {
@@ -115,18 +127,35 @@
   width: 35px;
   height: 35px;
   padding: 20px;
-  accent-color: #f6f8fb;
+  accent-color: #b7b9bb;
+}
+
+
+
+.task{
+  background-color:rgb(32,36,64) ;
+}
+.task:hover{
+  background-color: rgba(32,36,64, .5);
 }
 .taskDetails {
   display: flex;
   flex-direction: column;
+  
 }
 .taskDetails .title {
-  font-size: 1.3rem;
-  padding: 8px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0px 0 10px;
+  color: rgb(247, 240, 240) ;
 }
 .taskDetails .desc {
   color: #dadede;
+  text-transform:capitalize;
+  margin: 0px 0 10px;
+}
+.priority_detail{
+  opacity: .7;
 }
 
 .edit_delete_icons {
@@ -134,17 +163,30 @@
   flex-wrap: wrap;
   gap: 20px;
   align-items: center;
+  cursor: pointer;
+}
+.medium{
+  color: rgb(61, 10, 246);
+}
+.low{
+  color: #533483;
+
+}
+.high{
+  color:#e94560;
 }
 
-.low, .lowFill {
+.lowFill {
   background-color: #0f3460;
-  color: #f6f8fb;
+
 }
-.high, .highFill {
+ .highFill {
   background-color: #e94560;
 }
-.medium, .mediumFill {
+ .mediumFill {
   background-color: #533483;
+
+
 }
 
 
@@ -183,4 +225,16 @@ form button{
   padding: 10px;
   margin-top: 20px;
   margin-right: 10px;
+}
+
+.errorComponent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.TaskHeading{
+  padding: 0 0 10px 30px;
+  font-size: 1.4rem;
+  font-family: play;
+  text-transform: capitalize;
 }
