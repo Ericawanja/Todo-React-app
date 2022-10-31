@@ -19,7 +19,7 @@ export default function Navbar({
       <div className="navWrapper">
         <div className="navContent">
           <div className="create" onClick={() => closeForm()}>
-          <span className="back"></span>
+         
             <IconContext.Provider value={{ color: "white", size: "34px" }}>
               <IoMdAdd />
             </IconContext.Provider>
@@ -56,6 +56,7 @@ export default function Navbar({
             </span>
 
             <div className="priorityIndex">
+              <p>Priority index</p>
               <div className="highIndex fill_name">
                 <div className="highFill fill"></div>
                 <div className="fill_name">High</div>
