@@ -1,12 +1,11 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;600&family=Play:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;600&family=Play:wght@400;700&display=swap");
 
 /****header*/
 .headerWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background:transparent;
+  background: transparent;
   padding: 20px 40px;
 }
 .profile {
@@ -21,9 +20,7 @@
   display: flex;
   align-items: center;
 }
-.searchBar div{
- 
-  
+.searchBar div {
 }
 .searchBar div input {
   outline: none;
@@ -32,11 +29,8 @@
   border-top-left-radius: 20px;
   font-size: 1.2rem;
   border: none;
-  
 }
-.searchBar div input:hover{
-  
-
+.searchBar div input:hover {
 }
 .icon {
   background-color: white;
@@ -47,7 +41,7 @@
 
 /******nav*/
 .navWrapper {
-  background-color: rgb(26,31,60);
+  background-color: rgb(26, 31, 60);
   min-height: 100vh;
 }
 .navContent {
@@ -58,13 +52,12 @@
 .menu {
   display: flex;
   flex-direction: column;
-  
 }
 .menu span {
   font-weight: 300;
   font-size: 1.2rem;
   cursor: pointer;
-  margin: 10px ;
+  margin: 10px;
   display: flex;
   align-items: center;
 }
@@ -75,34 +68,47 @@
 .create {
   display: flex;
   align-items: center;
-  background-color: #0f3460;
+  background-color: transparent;
   padding: 10px;
+  border: 1px solid #0f3460;
   border-radius: 50px;
   margin: 7px;
   font-size: 1.3rem;
   gap: 4px;
   cursor: pointer;
+  position: relative;
 }
-.priorityIndex{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
+.create .back {
+  position: absolute;
+  top: 0;
+  background-color: #0f3460;
+  left: 0;
+  width: 0;
+  height: 100%;
+  border-radius: 50px;
+  z-index: -1;
+}
+.back:hover{
+  width: 100%;
+}
+.priorityIndex {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
 }
 
-.fill_name{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    
+.fill_name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
 }
-.fill{
-    width: 25px;
-    height: 25px;
+.fill {
+  width: 25px;
+  height: 25px;
 }
-
 
 /**MAIN**/
 .mainWrapper {
@@ -111,7 +117,7 @@
 .task {
   border-bottom-left-radius: 30px;
   border-top-right-radius: 30px;
-  margin: 10px;
+  margin: 15px 10px;
   padding: 10px;
   display: grid;
   grid-template-columns: 20% 60% 20%;
@@ -130,32 +136,29 @@
   accent-color: #b7b9bb;
 }
 
-
-
-.task{
-  background-color:rgb(32,36,64) ;
+.task {
+  background-color: rgb(32, 36, 64);
 }
-.task:hover{
-  background-color: rgba(32,36,64, .5);
+.task:hover {
+  background-color: rgba(32, 36, 64, 0.5);
 }
 .taskDetails {
   display: flex;
   flex-direction: column;
-  
 }
 .taskDetails .title {
   font-size: 1.5rem;
   font-weight: 600;
   padding: 0px 0 10px;
-  color: rgb(247, 240, 240) ;
+  color: rgb(247, 240, 240);
 }
 .taskDetails .desc {
   color: #dadede;
-  text-transform:capitalize;
+  text-transform: capitalize;
   margin: 0px 0 10px;
 }
-.priority_detail{
-  opacity: .7;
+.priority_detail {
+  opacity: 0.7;
 }
 
 .edit_delete_icons {
@@ -165,32 +168,27 @@
   align-items: center;
   cursor: pointer;
 }
-.medium{
+.medium {
   color: rgb(61, 10, 246);
 }
-.low{
+.low {
   color: #533483;
-
 }
-.high{
-  color:#e94560;
+.high {
+  color: #e94560;
 }
 
 .lowFill {
   background-color: #0f3460;
-
 }
- .highFill {
+.highFill {
   background-color: #e94560;
 }
- .mediumFill {
+.mediumFill {
   background-color: #533483;
-
-
 }
 
-
-.modal-container{
+.modal-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -203,7 +201,7 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
-.form-modal{
+.form-modal {
   background-color: #0a1b48;
   width: 400px;
   padding: 20px;
@@ -212,29 +210,44 @@
 }
 
 form input[type="text"],
-form textarea
-
-{
+form textarea {
   width: 100%;
   padding: 5px 10px;
   margin-top: 5px;
 }
 
-form button{
+form button {
   width: 120px;
   padding: 10px;
   margin-top: 20px;
   margin-right: 10px;
 }
 
-.errorComponent{
+.errorComponent {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.TaskHeading{
+.TaskHeading {
   padding: 0 0 10px 30px;
   font-size: 1.4rem;
   font-family: play;
   text-transform: capitalize;
+}
+.alertCompleted{
+  position: absolute;
+  top:50%;
+  left:30%;
+  transform: translate(50%, 50%);
+  width: 180px;
+  border: 1px solid rgba(218, 152, 152, 0.5);
+  
+}
+.alertCompleted .closeBtn{
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 5px 0  ;
+}
+.closeBtn button{
+  padding: 5px;
 }

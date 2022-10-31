@@ -14,6 +14,8 @@ function Main({
   filterData,
   data
 }) {
+
+  const [done, setDone] =useState(false)
   //invoked on check to change item status (pending|| done)
   const checkboxChange = (id) => {
     
@@ -44,6 +46,7 @@ function Main({
 
   const handleEdit = (id) => {
     const item = list.find((t) => t.id === id);
+    if (item.status==='done') return setDone(true)
 
     setFormDetails(item);
     setState((prev) => ({ ...prev, editing: true }));
@@ -88,11 +91,11 @@ function Main({
 
                   <div className="edit_delete_icons">
                     <span className="edit" onClick={() => handleEdit(id)}>
-                      <IconContext.Provider
+                        <IconContext.Provider
                         value={{ color: "#b7b9bb", size: "30px" }}
                       >
                         <BiEditAlt />
-                      </IconContext.Provider>
+                      </IconContext.Provider> 
                     </span>
                     <span className="delete" onClick={() => handleDelete(id)}>
                       <IconContext.Provider
@@ -108,6 +111,10 @@ function Main({
           </div>
         </div>
       )}
+      {done && <div className="alertCompleted form-modal">
+        <span>You cannot edit completed task</span>
+        <span className="closeBtn"><button onClick={()=>setDone(false)}>Close</button></span>
+      </div>}
     </>
   );
 }

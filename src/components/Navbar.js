@@ -19,6 +19,7 @@ export default function Navbar({
       <div className="navWrapper">
         <div className="navContent">
           <div className="create" onClick={() => closeForm()}>
+          <span className="back"></span>
             <IconContext.Provider value={{ color: "white", size: "34px" }}>
               <IoMdAdd />
             </IconContext.Provider>
@@ -71,6 +72,8 @@ export default function Navbar({
           </div>
         </div>
       </div>
+
+
       {openStatus && (
         <div className="modal-container">
           <form className="form-modal">
